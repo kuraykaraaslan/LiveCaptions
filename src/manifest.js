@@ -18,13 +18,13 @@ export default defineManifest({
   },
   options_page: 'options.html',
   background: {
-    service_worker: 'src/background/index.js',
+    service_worker: 'src/background/index.jsx',
     type: 'module',
   },
   content_scripts: [
     {
       matches: ['http://*/*', 'https://*/*'],
-      js: ['src/content/index.js'],
+      js: ['src/content/index.jsx'],
     },
   ],
   side_panel: {
@@ -36,5 +36,10 @@ export default defineManifest({
       matches: [],
     },
   ],
-  permissions: ['sidePanel'],
+  permissions: [
+    'sidePanel', 
+    'tabs',
+    'activeTab',
+    'tabCapture',
+  ],
 })
